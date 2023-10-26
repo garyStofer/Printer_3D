@@ -1,0 +1,27 @@
+SD card hookup on ESP8266 and ESP 32
+
+
+uSD		(interface type) 	|  SD-card connected via std. SPI	|      SD-card connected via SDIO interface, aka (HS2)
+					|	ESP12-E, 	ESP8266 	|		ESP32-CAM,	ESP32-S module 
+pin#	 SD		  SPI	,  	|	pad,		chip pin	|		SigName		pad
+---------------------------------------------------------------------------------------------------------------------------------------				
+1		DAT2	  unused		-----						HS2_DATA2	GPIO12
+2		CD,DAT3	  CS			GPIO4&GPIO5	16-GPIO4,24-GPIO5		HS2_DATA3	GPIO13
+3		CMD	  DI (MOSI)		GPIO13		12,MTCK				HS2_CMD		GPIO15
+4		VDD	  VDD			3.3V						3.3V		3V3
+5		CLK	  SCLK			GPIO14		9, MTMS				HS2_CLK		GPIO14
+6		VSS	  VSS   		GND						GND		gnd
+7		DAT0	  DO(MISO)		GPIO12		10,MTDI				HS2_DATA0	GPIO2
+8		DAT1	  unused    		-----						HS2_DATA1	GPIO4
+
+
+The flash chip on the ESP-01 and ESP-12E boards are connected via the SDIO interface 
+On ESP12-E module the following are equals
+SilkScreen	   Chip_signal & pin#	aka
+------------------------------------
+SCLK			SD_CLK		pin21	GPIO6
+MOSI			SD_DATA_1	pin23	GPIO8
+GPIO10			SD_DATA_3  	pin19	GPIO10
+GPIO9			SD_DATA_2  	pin18	GPIO9
+MISO			SD_DATA_0	pin22	GPIO7
+CS0			SD_CMD		pin20	GPIO11
